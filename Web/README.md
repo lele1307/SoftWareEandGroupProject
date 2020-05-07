@@ -1,10 +1,17 @@
 # Web Application
 
-Our website is mainly focusing on the **description of the game**, playing a **interaction with desktop game** and providing a **visualized data** about analyzing player‘s behavior and preference.
+Our website is mainly focusing on the **description of the game**, playing an **interaction with desktop game** and providing a **visualized data** about analyzing player‘s behavior and preference.
 
 The entire web application partly relies on the Bootstrap4 layout and references some font Awesome icons
 
 Main front-end logics are implemented with JavaScript and JQuery, while some external libraries are used for specific functionalities (e.g. Echarts is used to Manager System for visualizing user's preference and final score).
+
+## *Content*
+ * [Function](#function)
+ * [Application Structure](#structure)
+ * [Communication Protocols](#protocols)
+ * [Datatype for MQTT](#type)
+ * [Limitations](#limitations)
 
 ## Developers
 
@@ -12,7 +19,7 @@ Main front-end logics are implemented with JavaScript and JQuery, while some ext
 
 **@ Kehan Du (mz19460)**
 
-## Function
+## <span id="function">Function
 
 1. Admin
    * Administer use the link **login** at the top of the navigation can access to Manager System
@@ -23,13 +30,14 @@ Main front-end logics are implemented with JavaScript and JQuery, while some ext
       > * Used a comic style to display the background of story
    * Interactive players are able to choose their favorite food that appear in the desktop game (in the part of "CheckBox")
       > * Used a check box style allow interactive players to select the food they like and also, they can submit and send the data via  MQTT in JSON format, which the food they chose will appear in the game
-   * Interactive players able to join the game (in the part of "Game")
+   * Users are able to get a general idea of the game (in the part of "Game Display")
+      > * Used GIF to display how the game actually works
    * Users can know the instructions of the game (in the part of "Instruction")
       > * Used slideshow style to display the instruction, the text below the picture will be moved with the picture simultaneously
    * User can learn some health tips (in the part of "Health Tips")
       > * Used flipcard style to display the healthy tip for each food
  
-## Application Structure
+## <span id="structure">Application Structure
  ```
     web
     │   README.md
@@ -54,9 +62,7 @@ Main front-end logics are implemented with JavaScript and JQuery, while some ext
 ```
 The files described in the structure are original parts, and other unmentioned files are mostly library files that the program depends on.
 
-## Web 
-
-## Communication Protocols 
+## <span id="protocols">Communication Protocols 
 The web application is mainly responsible for communicating with processing (desktop). We chose MQTT as communication methods.
 
 Our communication achieved two main functions:
@@ -66,7 +72,7 @@ Our communication achieved two main functions:
 Because the data messages we communicate is time-sensitive and the message body is small, MQTT is the most convenient way to connect at both ends. We only need to subscribe to relevant topics to achieve.
 
 
-## Datatype for MQTT
+## <span id="type">Datatype for MQTT
 ```json
 {
    "datatype":"datatype_name",
@@ -106,7 +112,7 @@ The web application will  ask Login  information from MQTT server if matched.
 {
     "datatype":"chart",
     "main":{
-        "score": 3,
+        "score": 276,
         "bonus": 1,
         "combo": 2,
         "salad": 1,
@@ -121,7 +127,7 @@ The web application will  ask Login  information from MQTT server if matched.
 ```
 After the player ends the game, the desktop application will send the player's preference information to the MQTT agent server. The web application will get this information then visualising by Echart-Bar. 
 
-## Limitation
+## <span id="limitations">Limitations
 
 1.Program compatibility
 
